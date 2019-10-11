@@ -51,7 +51,10 @@ def create_entity_def(input_entities):
         entity = {}
         if input_entity.get("entity_type_name") is not None:
             entity["typeName"] = input_entity["entity_type_name"] 
-            entity["guid"] = -200
+            if input_entity.get("guid") is not None:
+                entity["guid"] = input_entity["guid"]
+            else:
+                entity["guid"] = -200
             if input_entity.get("created_by") is not None:
                 entity["createdBy"]= input_entity["created_by"]
             attributes = {}
@@ -65,7 +68,7 @@ def create_entity_def(input_entities):
                             attributes[attribute["attr_name"]].append(att_v)
                 entity["attributes"] = attributes
         entities.append(entity)
-    entities_def = {"entityDefs":entities}
+    entities_def = {"entities":entities}
     if len(entities) <= 0:
         entities_def = None
     return(entities_def)

@@ -11,10 +11,64 @@ guid:
 ddb2bc49-af2a-41e3-9b26-0c6bec90e0d6
 
 
+[{"name": "adlsgen2_azure_col_map", "description": "linking adlsgen2 to azure sql column", "relationshipCategory": "ASSOCIATION", "endDef1": {"type": "azure_datalake_gen2_resource_set", "name": "adlsgen2_file_header", "cardinality": "SINGLE", "isLegacyAttribute": false}, "endDef2": {"type": "azure_sql_column_sg", "name": "azure_col_name", "cardinality": "SINGLE", "isLegacyAttribute": false}, "attributeDefs": [], "propagateTags": "BOTH", "relationshipLabel": "r:adlsgen2_Resource_Set to azure_sql_column "}]
+
 Winston Frick, Stefan Gordon, and Kirill Logachev
 
 
-{"entityDefs": [{"superTypes": [], "subTypes": [], "name": "DQ_Rule", "attributeDefs": [{"name": "rule_type", "typeName": "string", "isOptional": false, "cardinality": "SINGLE", "valuesMinCount": 1, "valuesMaxCount": 1, "isUnique": false, "isIndexable": false, "includeInNotification": false}, {"name": "name", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "valuesMinCount": 0, "valuesMaxCount": 1, "isUnique": false, "isIndexable": false, "includeInNotification": false}, {"name": "rule_id", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "valuesMinCount": 0, "valuesMaxCount": 1, "isUnique": false, "isIndexable": false, "includeInNotification": false}], "typeVersion": "1.0"}]}
+{"entityDefs": [{"superTypes": ["DataSet"], "subTypes": [], "name": "DQ_Rule_1", "attributeDefs": [{"name": "rule_type", "typeName": "string", "isOptional": false, "cardinality": "SINGLE", "valuesMinCount": 1, "valuesMaxCount": 1, "isUnique": false, "isIndexable": false, "includeInNotification": false}, {"name": "name", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "valuesMinCount": 0, "valuesMaxCount": 1, "isUnique": false, "isIndexable": false, "includeInNotification": false}, {"name": "rule_id", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "valuesMinCount": 0, "valuesMaxCount": 1, "isUnique": false, "isIndexable": false, "includeInNotification": false}], "typeVersion": "1.0"}]}
 
 cf7b2fcd-6b9c-4902-8f57-ad889f060cd2
+
+{
+    "entityDefs": [
+        {
+            "superTypes": [
+                "Process"
+            ],
+            "category": "ENTITY",
+            "name": "derived_from_col",
+            "description": "One is derived from another",
+            "typeVersion": "1.0",
+            "attributeDefs": [
+                {
+                    "name": "StartTime",
+                    "typeName": "string",
+                    "isOptional": false,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 1,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false
+                },
+                {
+                    "name": "EndTime",
+                    "typeName": "string",
+                    "isOptional": false,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 1,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false
+                }
+            
+            ]
+        }
+    ]
+}
+
+62a1bdcf-11ea-4904-a17f-44ad29e8eefa
+
+
+{"entity": {"typeName": "derived_from_col", "guid": -200, "createdBy": "sg", "attributes": {"inputs": [{"guid": "ddb2bc49-af2a-41e3-9b26-0c6bec90e0d6", "typeName": "azure_sql_column_sg"}], "outputs": [{"guid": "faf02429-9fbf-4d97-b0d9-35a8dd6887bd", "typeName": "DQ_Rule_1"}, {"guid": "674aeda1-6f7d-4d61-9910-188b9050ed52", "typeName": "DQ_Rule_1"}], "qualifiedName": "process/derived_from_col/dqrule/azure_sql_column", "name": "derived_from_col_dq", "StartTime": "10:40:09", "EndTime": "10:50:09"}}}
+
+
+3134b5cc-60a3-43b4-815a-bdf99fd81263
+
+
+​/api​/atlas_entities_create
+
+https://markheath.net/post/deploying-azure-functions-with-azure-cli
+
+
 
