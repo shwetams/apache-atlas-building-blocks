@@ -11,7 +11,7 @@ attributes1.append({"attr_name":"name","attr_value":"Not Null Check of Day Date"
 attributes1.append({"attr_name":"rule_type","attr_value":"NotNull","is_entityref":False})
 attributes1.append({"attr_name":"rule_id","attr_value":"rule101","is_entityref":False})
 input_entity1["attributes"]=attributes1
-print(input_entity1)
+#print(input_entity1)
 
 # DQ Rule 2
 input_entity2 = {}
@@ -23,7 +23,7 @@ attributes2.append({"attr_name":"name","attr_value":"Uniqueness Check of Day Key
 attributes2.append({"attr_name":"rule_type","attr_value":"UniquenessCheck","is_entityref":False})
 attributes2.append({"attr_name":"rule_id","attr_value":"rule102","is_entityref":False})
 input_entity2["attributes"]=attributes2
-print(input_entity2)
+#print(input_entity2)
 
 # azure sql column
 input_entity3 = {}
@@ -37,12 +37,12 @@ attributes3.append({"attr_name":"FailedCount","attr_value":2000,"is_entityref":F
 attributes3.append({"attr_name":"TotalCount","attr_value":10000000,"is_entityref":False})
 attributes3.append({"attr_name":"DQRules","attr_value":[{"guid":"faf02429-9fbf-4d97-b0d9-35a8dd6887bd","typeName":"DQ_Rule_1","uniqueAttributes":{}},{"guid":"674aeda1-6f7d-4d61-9910-188b9050ed52","typeName":"DQ_Rule_1","uniqueAttributes":{}}],"is_entityref":True})
 input_entity3["attributes"]=attributes3
-print(input_entity3)
+#print(input_entity3)
 
 input_entities.append(input_entity1)
 input_entities.append(input_entity2)
 input_entities.append(input_entity3)
-
+#print(input_entities)
 
 def create_entity_def(input_entities):
     entities = []
@@ -66,7 +66,9 @@ def create_entity_def(input_entities):
                 entity["attributes"] = attributes
         entities.append(entity)
     entities_def = {"entityDefs":entities}
+    if len(entities) <= 0:
+        entities_def = None
     return(entities_def)
 
 
-create_entity_def(input_entities)
+#create_entity_def(input_entities)

@@ -11,7 +11,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     print(req_body)
     entity_json = create_entity.create_entity_def(req_body)
     if entity_json is not None:
-        return func.HttpResponse(json.dumps(entity_json),status_code=200)
+        return func.HttpResponse(json.dumps(entity_json),status_code=200,mimetype="application/json")
     else:
         return func.HttpResponse("Invalid Entity structure please use the structure defined in the link",status_code=400)
     '''
