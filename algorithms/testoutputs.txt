@@ -1,0 +1,20 @@
+{"entity": {"typeName": "DQ_Rule_1", "guid": -200, "createdBy": "sg", "attributes": {"qualifiedName": "dq_rules/day_date/notnull", "name": "Not Null Check of Day Date", "rule_type": "NotNull", "rule_id": "rule101"}}}
+guid:
+faf02429-9fbf-4d97-b0d9-35a8dd6887bd
+
+{"entity": {"typeName": "DQ_Rule_1", "guid": -200, "createdBy": "sg", "attributes": {"qualifiedName": "dq_rules/day_key/uniquenesscheck", "name": "Uniqueness Check of Day Key", "rule_type": "UniquenessCheck", "rule_id": "rule102"}}}
+guid:
+674aeda1-6f7d-4d61-9910-188b9050ed52
+
+{"entity": {"typeName": "azure_sql_column", "guid": -200, "createdBy": "sg", "attributes": {"qualifiedName": "asset/categoryid", "name": "CategoryID", "data_type": "string", "FailedCount": 2000, "TotalCount": 10000000, "DQRules": [{"guid": "faf02429-9fbf-4d97-b0d9-35a8dd6887bd", "typeName": "DQ_Rule_1", "uniqueAttributes": {}}, {"guid": "674aeda1-6f7d-4d61-9910-188b9050ed52", "typeName": "DQ_Rule_1", "uniqueAttributes": {}}]}}}
+
+ddb2bc49-af2a-41e3-9b26-0c6bec90e0d6
+
+
+Winston Frick, Stefan Gordon, and Kirill Logachev
+
+
+{"entityDefs": [{"superTypes": [], "subTypes": [], "name": "DQ_Rule", "attributeDefs": [{"name": "rule_type", "typeName": "string", "isOptional": false, "cardinality": "SINGLE", "valuesMinCount": 1, "valuesMaxCount": 1, "isUnique": false, "isIndexable": false, "includeInNotification": false}, {"name": "name", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "valuesMinCount": 0, "valuesMaxCount": 1, "isUnique": false, "isIndexable": false, "includeInNotification": false}, {"name": "rule_id", "typeName": "string", "isOptional": true, "cardinality": "SINGLE", "valuesMinCount": 0, "valuesMaxCount": 1, "isUnique": false, "isIndexable": false, "includeInNotification": false}], "typeVersion": "1.0"}]}
+
+cf7b2fcd-6b9c-4902-8f57-ad889f060cd2
+
