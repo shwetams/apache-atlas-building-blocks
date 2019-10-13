@@ -1,0 +1,30 @@
+apache-atlas-json-generator-lineage
+
+{"guid": "3134b5cc-60a3-43b4-815a-bdf99fd81263", "name": "derived_from_col_dq", "type_name": "derived_from_col", "qualified_name": "process/derived_from_col/dqrule/azure_sql_column", "created_by": "sg", "process_attributes": [{"attr_name": "StartTime", "attr_value": "10:40:09", "is_entityref": false}, {"attr_name": "EndTime", "attr_value": "10:50:09", "is_entityref": false}], "inputs": [{"guid": "ddb2bc49-af2a-41e3-9b26-0c6bec90e0d6", "typeName": "azure_sql_column_sg"}], "outputs": [{"guid": "faf02429-9fbf-4d97-b0d9-35a8dd6887bd", "typeName": "DQ_Rule_1"}, {"guid": "674aeda1-6f7d-4d61-9910-188b9050ed52", "typeName": "DQ_Rule_1"}]}
+
+create_entity
+
+https://atlas-json-creator.azurewebsites.net/api​/atlas_lineage_create
+​/api​/atlas_entities_create
+
+​/api​/atlas_entities_create
+
+org.apache.atlas.model.instance.AtlasRelationship
+
+
+
+{"name": "adlsgen2_azure_col_map", "description": "linking adlsgen2 to azure sql column", "relationshipCategory": "ASSOCIATION", "typeName":"adlsgen2_azure_col_map", "end1": {"type": "azure_datalake_gen2_resource_set", "name": "adlsgen2_file_header", "cardinality": "SINGLE", "isLegacyAttribute": false}, "end2": {"type": "azure_sql_column_sg", "name": "azure_col_name", "cardinality": "SINGLE", "isLegacyAttribute": false}, "attributeDefs": [], "propagateTags": "BOTH", "relationshipLabel": "r:adlsgen2_Resource_Set to azure_sql_column "}
+
+
+
+{"relationshipDefs":[
+	{"name": "adlsgen2_azure_col_map", "description": "linking adlsgen2 to azure sql column", "relationshipCategory": "ASSOCIATION",  "end1Def": {"typeName": "azure_datalake_gen2_resource_set", "name": "azure_datalake_gen2_resource_set", "cardinality": "SINGLE","isLegacyAttribute": false, "isContainer":false}, "end2Def": {"typeName": "azure_sql_column_sg", "name": "azure_sql_column_sg", "cardinality": "SINGLE","isLegacyAttribute": false, "isContainer":true}, "attributeDefs": [], "propagateTags": "BOTH", "relationshipLabel": "r:adlsgen2_Resource_Set to azure_sql_column "}
+	]}
+
+
+There was an error processing your request. It has been logged (ID ac589d09bb5f1221).
+
+{"relationshipDefs":[{"name": "adlsgen2_azure_col_map", "description": "linking adlsgen2 to azure sql column", "relationshipCategory": "ASSOCIATION",  "end1Def": {"typeName": "azure_datalake_gen2_resource_set", "name": "azure_datalake_gen2_resource_set", "cardinality": "SINGLE","isLegacyAttribute": false, "isContainer":false}, "end2Def": {"typeName": "azure_sql_column_sg", "name": "azure_sql_column_sg", "cardinality": "SINGLE","isLegacyAttribute": false, "isContainer":true}, "attributeDefs": [], "propagateTags": "BOTH", "relationshipLabel": "r:adlsgen2_Resource_Set to azure_sql_column "}
+	]}
+
+There was an error processing your request. It has been logged (ID e19843646ae6e0f9).

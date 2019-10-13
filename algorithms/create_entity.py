@@ -42,7 +42,7 @@ input_entity3["attributes"]=attributes3
 input_entities.append(input_entity1)
 input_entities.append(input_entity2)
 input_entities.append(input_entity3)
-#print(input_entities)
+print(json.dumps(input_entities))
 
 def create_entity_def(input_entities):
     entities = []

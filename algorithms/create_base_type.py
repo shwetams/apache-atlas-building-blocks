@@ -30,30 +30,30 @@ relationships = []
 relationship = {}
 relationship["category"] = "RELATIONSHIP"
 relationship["created_by"] = "sg"
-relationship["name"] = "adlsgen2_azure_col_map"
-relationship["description"] = "linking adlsgen2 to azure sql column"
+relationship["name"] = "adlsgen2_azure_col_map_20191013"
+relationship["description"] = "linking adlsgen2 to azure sql column _20191013"
 relationship["relationship_category"]= relationship_category.ASSOCIATION.name
 adlsgen2_attribute = {}
 adlsgen2_attribute["cardinality"] = cardinality.SINGLE.name
-adlsgen2_attribute["type"] = "azure_datalake_gen2_resource_set"
+adlsgen2_attribute["type"] = "azure_datalake_gen2_resource_set_20191013"
 adlsgen2_attribute["attributes"] = []
 adlsgen2_attribute["attributes"].append({"name":"headerName"})
 adlsgen2_attribute["attributes"].append({"type":"string"})
 relationship_attributes.append(adlsgen2_attribute)
 relationship["propagation_flow"] = relationship_propagation.BOTH.name
 relationship['entity1'] = {}
-relationship['entity1']['type'] = "azure_datalake_gen2_resource_set"
-relationship['entity1']['name'] = "adlsgen2_file_header"
+relationship['entity1']['type'] = "azure_datalake_gen2_resource_set_20191013"
+relationship['entity1']['name'] = "adlsgen2_file_header_20191013"
 relationship['entity1']['cardinality'] = cardinality.SINGLE.name
 relationship['entity1']['isLegacyAttribute'] = False
 
 relationship['entity2'] = {}
-relationship['entity2']['type'] = "azure_sql_column_sg"
-relationship['entity2']['name'] = "azure_col_name"
+relationship['entity2']['type'] = "azure_sql_column_sg_20191013"
+relationship['entity2']['name'] = "azure_col_name_20191013"
 relationship['entity2']['cardinality'] = cardinality.SINGLE.name
 relationship['entity2']['isLegacyAttribute'] = False
 
-relationship['label'] = "r:adlsgen2_Resource_Set to azure_sql_column "
+relationship['label'] = "r:adlsgen2_Resource_Set to azure_sql_column _20191013 "
 
 relationships.append(relationship)
 
@@ -68,8 +68,8 @@ inp_base_types_param = []
 ## Testing new type
 
 base_type2 = {}
-base_type2['name']='DQ_Rule'
-base_type2['description'] = 'a DQ Rule'
+base_type2['name']='DQ_Rule_20191013'
+base_type2['description'] = 'a DQ Rule _20191013'
 base_type2['new_attributes_defs']=[]
 base_type2['new_attributes_defs'].append({"name": "rule_type","typeName": "string","isOptional": False,"cardinality": "SINGLE","valuesMinCount": 1,"valuesMaxCount": 1,"isUnique": False,"isIndexable": False,"includeInNotification": False})
 base_type2['new_attributes_defs'].append({"name": "name","typeName": "string","isOptional": True,"cardinality": "SINGLE","valuesMinCount": 0,"valuesMaxCount": 1,"isUnique": False,"isIndexable": False,"includeInNotification": False})
@@ -82,7 +82,7 @@ base_type2['typeVersion'] ='1.0'
 inp_base_types_param.append(base_type2)
 
 base_type = {}
-base_type['name']='azure_sql_column'
+base_type['name']='azure_sql_column_20191013'
 base_type['description'] = 'A Column in Azure SQL Database'
 base_type['new_attributes_defs']=[]
 base_type['new_attributes_defs'].append({"name": "TotalCount","typeName": "long","isOptional": True,"cardinality": "SINGLE","valuesMinCount": 0,"valuesMaxCount": 1,"isUnique": False,"isIndexable": False,"includeInNotification": False})
@@ -90,16 +90,16 @@ base_type['new_attributes_defs'].append({"name": "FailedCount","typeName": "long
 base_type['new_attributes_defs'].append({"name": "DataUpdateTimeStamp","typeName": "date","isOptional": True,"cardinality": "SINGLE","valuesMinCount": 0,"valuesMaxCount": 1,"isUnique": False,"isIndexable": False,"includeInNotification": False})
 base_type['created_by'] = 'sg'
 
-base_type['new_super_types'] = []
-base_type['new_sub_types']=[]
+base_type['super_types'] = []
+base_type['sub_types']=[]
 base_type['category'] = 'ENTITY'
 base_type['typeVersion'] ='1.0'
 
 inp_base_types_param.append(base_type)
 
 base_type1 = {}
-base_type1['name']='azure_datalake_gen2_resource_set'
-base_type1['description'] = 'A Column in Azure SQL Database'
+base_type1['name']='azure_datalake_gen2_resource_set_20191013'
+base_type1['description'] = 'A Column in Azure SQL Database _20191013'
 base_type1['new_attributes_defs']=[]
 base_type1['new_attributes_defs'].append({"name": "TotalCount","typeName": "long","isOptional": True,"cardinality": "SINGLE","valuesMinCount": 0,"valuesMaxCount": 1,"isUnique": False,"isIndexable": False,"includeInNotification": False})
 base_type1['new_attributes_defs'].append({"name": "FailedCount","typeName": "long","isOptional": True,"cardinality": "SINGLE","valuesMinCount": 0,"valuesMaxCount": 1,"isUnique": False,"isIndexable": False,"includeInNotification": False})
@@ -107,8 +107,8 @@ base_type1['new_attributes_defs'].append({"name": "DataUpdateTimeStamp","typeNam
 
 base_type1['created_by'] = 'sg'
 
-base_type1['new_super_types'] = ['']
-base_type1['new_sub_types']=[]
+base_type1['super_types'] = ['']
+base_type1['sub_types']=[]
 base_type1['category'] = 'ENTITY'
 base_type1['typeVersion'] ='1.0'
 
@@ -149,12 +149,11 @@ def create_relationsDefs(inp_relationships):
     relationship_defs_json = relationship_defs
     return relationship_defs_json
 
-print(create_relationsDefs(relationships))
 
 ## Create EntityDef
 def create_entityDefs(inp_base_types):
     base_file_path = 'get_typedefs.json'
-    entity_defs_json={}
+#    entity_defs_json={}
     entity_defs = []
     base_type_found = False
     with open(base_file_path) as adc_gen2_typdef_file:
@@ -215,5 +214,13 @@ def create_entityDefs(inp_base_types):
                 new_entity_def['attributeDefs'] = inp_base_type['new_attributes_defs']
                 new_entity_def['typeVersion'] = inp_base_type['typeVersion']
                 entity_defs.append(new_entity_def)
-    entity_defs_json['entityDefs'] = entity_defs
-    print(entity_defs_json)
+    #entity_defs_json['entityDefs'] = entity_defs
+    return entity_defs
+
+typeDefs = {}
+typeDefs["entityDefs"] = []
+typeDefs["entityDefs"] = create_entityDefs(inp_base_types_param)
+typeDefs["relationshipDefs"] = []
+typeDefs["relationshipDefs"]=create_relationsDefs(relationships)
+
+print(json.dumps(typeDefs))
