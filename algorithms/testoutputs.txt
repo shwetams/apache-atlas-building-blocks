@@ -70,5 +70,49 @@ cf7b2fcd-6b9c-4902-8f57-ad889f060cd2
 
 https://markheath.net/post/deploying-azure-functions-with-azure-cli
 
+{
+    "enumDefs": [],
+    "structDefs": [
+        {
+            "category": "STRUCT",
+            "guid": "af02eb07-02e7-4399-9f59-e9dce1851dc6",
+            "createdBy": "admin",
+            "updatedBy": "admin",
+            "createTime": 1571055763,
+            "updateTime": 1571055763,
+            "version": 1,
+            "name": "blob_soft_deleted_state",
+            "description": "blob_soft_deleted_state",
+            "typeVersion": "1.0",
+            "attributeDefs": [
+                {
+                    "name": "deletedTime",
+                    "typeName": "date",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "deleted",
+                    "typeName": "boolean",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                }
+            ]
+        }
+    ],
+    "classificationDefs": [],
+    "entityDefs": [],
+    "relationshipDefs": []
+}
 
 

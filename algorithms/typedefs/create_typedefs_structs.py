@@ -1,4 +1,6 @@
 import atlas_enumdefs as atlas_enumdefs
+import time
+import json
 '''
 1. category	TypeCategory	
 2. createTime	number	
@@ -26,22 +28,15 @@ import atlas_enumdefs as atlas_enumdefs
 
 '''
 
-structDefs_list = []
-structDefs = {}
-structDefs["category"] = atlas_enumdefs.Category.STRUCT.name
-structDefs["name"] = "blob_soft_deleted_state"
-structDefs["attributes"] = []
-structDefs["attributes"].append({"name":"deleted","typeName":"boolean","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE})
-structDefs["attributes"].append({"name":"deletedTime","typeName":"date","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE})
-structDefs["attributes"].append({"name":"deleted","typeName":"boolean","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE})
 
-def create_struct_defs(strucDefs):
+
+def create_struct_defs(structDefs):
     struct_defs_list = []
     for structDef in structDefs:
         struct_def = {}
         if structDef.get("name") is not None and structDef.get("attributes") is not None:
             struct_def["category"] = atlas_enumdefs.Category.STRUCT.name
-            structDef["attributedefs"] = []
+            struct_def["attributeDefs"] = []
             struct_def["name"] = structDef["name"]
             if structDef.get("attributes") is not None:
                 for attribute in structDef["attributes"]:
@@ -58,21 +53,24 @@ def create_struct_defs(strucDefs):
             else:
                 struct_def["createdBy"] = "admin"
             if structDef.get("updateTime") is not None:
-                
-
-
-    
-
-
-createTime	number	
-3. createdBy	string	
-4. dateFormatter	DateFormat	
-5. description	string	
-6. guid	string	
-7. name	string	
-8. options	map of string	
-9. serviceType	string	
-10. typeVersion	string	
-11. updateTime	number	
-12. updatedBy	string	
-13. version	number
+                struct_def["updateTime"] = structDef["updateTime"]
+            else:
+                struct_def["updateTime"] = int(time.time())
+            if structDef.get("updatedBy") is not None:
+                struct_def["updatedBy"] = structDef["updatedBy"]
+            else:
+                struct_def["updatedBy"] = "admin"
+            if structDef.get("description") is not None:
+                struct_def["description"] = structDef["description"]
+            else:
+                struct_def["description"] = structDef["name"]
+            if structDef.get("options") is not None:
+                struct_def["options"] = structDef["options"]
+            if structDef.get("serviceType") is not None:
+                struct_def["serviceType"] = structDef["serviceType"]
+            if structDef.get("typeVersion") is not None:
+                struct_def["typeVersion"] = structDef["typeVersion"]
+            else:
+                struct_def["typeVersion"] = "1.0"
+            struct_defs_list.append(struct_def)
+    return struct_defs_list        

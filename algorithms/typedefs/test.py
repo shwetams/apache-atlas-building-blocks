@@ -1,6 +1,10 @@
+
 import create_typedefs_entities
 import create_typedefs_relationships
 import create_typedefs_enum
+import create_typedefs_structs
+import create_typedefs_classifications
+
 import atlas_enumdefs
 import json
 ## Sample input for entity:
@@ -103,15 +107,37 @@ enum_def["elements"].append({"value":"Archive","ordinal":3,"description":"Archiv
 
 enum_defs.append(enum_def)
 
+structDefs_list = []
+structDefs = {}
+structDefs["category"] = atlas_enumdefs.Category.STRUCT.name
+structDefs["name"] = "blob_soft_deleted_state"
+structDefs["attributes"] = []
+structDefs["attributes"].append({"name":"deleted","typeName":"boolean","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name})
+structDefs["attributes"].append({"name":"deletedTime","typeName":"date","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name})
+structDefs["attributes"].append({"name":"deleted","typeName":"boolean","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name})
+structDefs_list.append(structDefs)
 
+inp_classifications = []
+classification = {}
+classification["name"] = "GOVERNMENT.CZECH.NATIONAL_ID_CARD_NUMBER"
+classification["description"] = "Czech National Identity Card Number"
+classification["superTypes"] = []
+classification["entityTypes"] = []
+classification["subTypes"] = []
+
+inp_classifications.append(classification)
 
 typedefs = {}
 typedefs["entityDefs"] = create_typedefs_entities.create_entity_defs(entity_defs)
 typedefs["relationshipDefs"] = create_typedefs_relationships.create_relationship_defs(inp_relationships)
 typedefs["enumDefs"] = create_typedefs_enum.create_enum_defs(enum_defs)
-
+typedefs["structDefs"] = create_typedefs_structs.create_struct_defs(structDefs_list)
+typedefs["classificationDefs"] = create_typedefs_classifications.create_classification_defs(inp_classifications)
 
 print(json.dumps(typedefs))
+
+
+
 
 
 ''' Response for entityDefs and enumDefs
@@ -298,4 +324,74 @@ print(json.dumps(typedefs))
     ]
 }
 
+
+{
+    "enumDefs": [],
+    "structDefs": [
+        {
+            "category": "STRUCT",
+            "guid": "af02eb07-02e7-4399-9f59-e9dce1851dc6",
+            "createdBy": "admin",
+            "updatedBy": "admin",
+            "createTime": 1571055763,
+            "updateTime": 1571055763,
+            "version": 1,
+            "name": "blob_soft_deleted_state",
+            "description": "blob_soft_deleted_state",
+            "typeVersion": "1.0",
+            "attributeDefs": [
+                {
+                    "name": "deletedTime",
+                    "typeName": "date",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                },
+                {
+                    "name": "deleted",
+                    "typeName": "boolean",
+                    "isOptional": true,
+                    "cardinality": "SINGLE",
+                    "valuesMinCount": 0,
+                    "valuesMaxCount": 1,
+                    "isUnique": false,
+                    "isIndexable": false,
+                    "includeInNotification": false
+                }
+            ]
+        }
+    ],
+    "classificationDefs": [],
+    "entityDefs": [],
+    "relationshipDefs": []
+}
+
+{
+    "enumDefs": [],
+    "structDefs": [],
+    "classificationDefs": [
+        {
+            "category": "CLASSIFICATION",
+            "guid": "bfc94a8a-6016-48bc-93a9-7fe63deb2046",
+            "createdBy": "admin",
+            "updatedBy": "admin",
+            "createTime": 1571059518339,
+            "updateTime": 1571059518339,
+            "version": 1,
+            "name": "GOVERNMENT.CZECH.NATIONAL_ID_CARD_NUMBER",
+            "description": "Czech National Identity Card Number",
+            "typeVersion": "1.0",
+            "attributeDefs": [],
+            "superTypes": [],
+            "entityTypes": [],
+            "subTypes": []
+        }
+    ],
+    "entityDefs": [],
+    "relationshipDefs": []
+}
 '''
