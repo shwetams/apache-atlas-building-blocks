@@ -39,7 +39,40 @@ def create_struct_defs(strucDefs):
     struct_defs_list = []
     for structDef in structDefs:
         struct_def = {}
-        if structDef.get("name") is not None and structDef.get("")
+        if structDef.get("name") is not None and structDef.get("attributes") is not None:
+            struct_def["category"] = atlas_enumdefs.Category.STRUCT.name
+            structDef["attributedefs"] = []
+            struct_def["name"] = structDef["name"]
+            if structDef.get("attributes") is not None:
+                for attribute in structDef["attributes"]:
+                    if attribute.get("name") is not None and attribute.get("typeName") is not None:
+                        struct_def["attributeDefs"].append(attribute)
+            if structDef.get("guid") is not None:
+                struct_def["guid"] = structDef["guid"]
+            if structDef.get("createTime") is not None:
+                struct_def["createTime"] = structDef["createTime"]
+            else:
+                struct_def["createTime"] = int(time.time())
+            if structDef.get("createdBy") is not None:
+                struct_def["createdBy"] = structDef["createdBy"]
+            else:
+                struct_def["createdBy"] = "admin"
+            if structDef.get("updateTime") is not None:
+                
+
+
     
 
 
+createTime	number	
+3. createdBy	string	
+4. dateFormatter	DateFormat	
+5. description	string	
+6. guid	string	
+7. name	string	
+8. options	map of string	
+9. serviceType	string	
+10. typeVersion	string	
+11. updateTime	number	
+12. updatedBy	string	
+13. version	number
