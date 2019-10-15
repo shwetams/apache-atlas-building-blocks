@@ -53,8 +53,6 @@ def create_entity_def(input_entities):
             entity["typeName"] = input_entity["entity_type_name"] 
             if input_entity.get("guid") is not None:
                 entity["guid"] = input_entity["guid"]
-            else:
-                entity["guid"] = -200
             if input_entity.get("created_by") is not None:
                 entity["createdBy"]= input_entity["created_by"]
             attributes = {}

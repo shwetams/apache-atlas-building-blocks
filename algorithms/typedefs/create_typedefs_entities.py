@@ -54,17 +54,17 @@ def create_entity_defs(entity_defs):
                 entity["description"] = entity_def["description"]
             else:
                 entity["description"] = entity_def["name"]
-            if entity_def.get("super_types") is not None:
-                entity["superTypes"] = entity_def["super_types"]
+            if entity_def.get("superTypes") is not None:
+                entity["superTypes"] = entity_def["superTypes"]
             else:
                 entity["superTypes"] = []
-            if entity_def.get("sub_types") is not None:
-                entity["subTypes"] = entity_def["sub_types"]
+            if entity_def.get("subTypes") is not None:
+                entity["subTypes"] = entity_def["subTypes"]
             else:
                 entity["subTypes"] = []
             entity["attributeDefs"] = []
-            if entity_def.get("attributes") is not None:
-                for attribute in entity_def["attributes"]:
+            if entity_def.get("attributeDefs") is not None:
+                for attribute in entity_def["attributeDefs"]:
                     if attribute.get("name") is not None and attribute.get("typeName") is not None and attribute.get("cardinality") is not None:
                         entity["attributeDefs"].append(attribute)
             if len(mandatory_attribute_defs) > 0:
@@ -76,18 +76,20 @@ def create_entity_defs(entity_defs):
             ### Optional 
             if entity_def.get("guid") is not None:
                 entity["guid"] = entity_def["guid"]
-            if entity_def.get("created_by") is not None:
-                entity["createdBy"] = entity_def["created_by"]
+            if entity_def.get("options") is not None:
+                entity["options"] = entity_def["options"]
+            if entity_def.get("createdBy") is not None:
+                entity["createdBy"] = entity_def["createdBy"]
             else:
                 entity["createdBy"] = "admin"
-            if entity_def.get("updated_by") is not None:
-                entity["updatedBy"] = entity_def["updated_by"]
+            if entity_def.get("updatedBy") is not None:
+                entity["updatedBy"] = entity_def["updatedBy"]
             if entity_def.get("created_time") is not None:
-                entity["createdTime"] = entity_def["created_time"]
+                entity["createdTime"] = entity_def["createdTime"]
             else:
                 entity["createdTime"] = int(time.time())
             if entity_def.get("updated_time") is not None:
-                entity["updatedTime"] = entity_def["updated_time"]
+                entity["updatedTime"] = entity_def["updatedTime"]
             else:
                 entity["updatedTime"] = int(time.time())
             if entity_def.get("version") is not None:

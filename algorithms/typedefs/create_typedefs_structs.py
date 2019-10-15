@@ -34,12 +34,12 @@ def create_struct_defs(structDefs):
     struct_defs_list = []
     for structDef in structDefs:
         struct_def = {}
-        if structDef.get("name") is not None and structDef.get("attributes") is not None:
+        if structDef.get("name") is not None and structDef.get("attributeDefs") is not None:
             struct_def["category"] = atlas_enumdefs.Category.STRUCT.name
             struct_def["attributeDefs"] = []
             struct_def["name"] = structDef["name"]
-            if structDef.get("attributes") is not None:
-                for attribute in structDef["attributes"]:
+            if structDef.get("attributeDefs") is not None:
+                for attribute in structDef["attributeDefs"]:
                     if attribute.get("name") is not None and attribute.get("typeName") is not None:
                         struct_def["attributeDefs"].append(attribute)
             if structDef.get("guid") is not None:

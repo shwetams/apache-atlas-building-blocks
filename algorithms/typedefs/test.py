@@ -13,9 +13,9 @@ entity_defs = []
 entity_def = {}
 entity_def["name"] ="azure_cosmosdb_account"
 entity_def["description"] ="azure_cosmosdb_account"
-entity_def["sub_types"] = [] # Array of strings or empty array
-entity_def["super_types"] = [] # Array of strings of empty array
-entity_def["attributes"] = [] # Array of attributes
+entity_def["subTypes"] = [] # Array of strings or empty array
+entity_def["superTypes"] = [] # Array of strings of empty array
+entity_def["attributeDefs"] = [] # Array of attributes
 attribute1 = {}
 attribute1["name"] = "api_type"
 attribute1["typeName"] = "string"
@@ -36,8 +36,8 @@ attribute2["valuesMaxCount"] = 1
 attribute2["isUnique"] = False
 attribute2["isIndexable"] = False
 attribute2["includeInNotification"] = False
-entity_def["attributes"].append(attribute1)
-entity_def["attributes"].append(attribute2)
+entity_def["attributeDefs"].append(attribute1)
+entity_def["attributeDefs"].append(attribute2)
 
 #entity_def["category"] = atlas_enumdefs.Category.ENTITY.name
 #entity_def["guid"] = -200
@@ -54,16 +54,17 @@ entity_defs.append(entity_def)
 entity_def1 = {}
 entity_def1["name"] = "azure_cosmosdb_database"
 entity_def1["description"] = "azure_cosmosdb_database"
-entity_def1["super_types"] = ["Asset"]
-entity_def1["sub_types"] = []
-entity_def1["attributes"] = []
-entity_def1["attributes"].append({"name":"resourceLink","typeName":"string","isOptional":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name,  "valuesMinCount": 1, "valuesMaxCount": 1,"isUnique": False, "isIndexable": False, "includeInNotification": False})
-entity_def1["attributes"].append({"name":"ods_zone","typeName":"string","isOptional":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name,  "valuesMinCount": 1, "valuesMaxCount": 1,"isUnique": False, "isIndexable": False, "includeInNotification": False})
-entity_def1["attributes"].append({"name":"lastModifiedTime","typeName":"date","isOptional":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name,  "valuesMinCount": 1, "valuesMaxCount": 1,"isUnique": False, "isIndexable": False, "includeInNotification": False})
-entity_def1["attributes"].append({"name":"string","typeName":"string","isOptional":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name,  "valuesMinCount": 1, "valuesMaxCount": 1,"isUnique": False, "isIndexable": False, "includeInNotification": False})
+entity_def1["superTypes"] = ["Asset"]
+entity_def1["subTypes"] = []
+entity_def1["attributeDefs"] = []
+entity_def1["attributeDefs"].append({"name":"resourceLink","typeName":"string","isOptional":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name,  "valuesMinCount": 1, "valuesMaxCount": 1,"isUnique": False, "isIndexable": False, "includeInNotification": False})
+entity_def1["attributeDefs"].append({"name":"ods_zone","typeName":"string","isOptional":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name,  "valuesMinCount": 1, "valuesMaxCount": 1,"isUnique": False, "isIndexable": False, "includeInNotification": False})
+entity_def1["attributeDefs"].append({"name":"lastModifiedTime","typeName":"date","isOptional":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name,  "valuesMinCount": 1, "valuesMaxCount": 1,"isUnique": False, "isIndexable": False, "includeInNotification": False})
+entity_def1["attributeDefs"].append({"name":"string","typeName":"string","isOptional":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name,  "valuesMinCount": 1, "valuesMaxCount": 1,"isUnique": False, "isIndexable": False, "includeInNotification": False})
 
 entity_defs.append(entity_def1)
 
+print(json.dumps(entity_defs))
 ### Testing relationships
 
 
@@ -71,8 +72,8 @@ inp_relationships = []
 inp_relationship = {}
 inp_relationship["name"] = "cosmosdb_account_database"
 inp_relationship["description"] = "cosmosdb_account_database"
-inp_relationship["propagate_tags"] = atlas_enumdefs.relationship_propagateTags.NONE.name
-inp_relationship["relationship_category"] = atlas_enumdefs.relationship_category.COMPOSITION.name
+inp_relationship["propagateTags"] = atlas_enumdefs.relationship_propagateTags.NONE.name
+inp_relationship["relationshipCategory"] = atlas_enumdefs.relationship_category.COMPOSITION.name
  
 
 
@@ -91,7 +92,7 @@ end2Def["cardinality"] = atlas_enumdefs.Cardinality.SINGLE.name
 end2Def["isLegacyAttribute"] = False
  
 inp_relationship["endDef2"] = end2Def
-inp_relationship["label"] = "r:cosmosdb_account_database"
+inp_relationship["relationshipLabel"] = "r:cosmosdb_account_database"
 inp_relationships.append(inp_relationship)
 
 
@@ -99,11 +100,11 @@ inp_relationships.append(inp_relationship)
 enum_defs = []
 enum_def = {}
 enum_def["name"] = "blob_access_tier"
-enum_def["elements"] = []
-enum_def["elements"].append({"value":"Unknown","ordinal":0,"description":"Unknown access tier"})
-enum_def["elements"].append({"value":"Hot","ordinal":1,"description":"Hot access tier"})
-enum_def["elements"].append({"value":"Cool","ordinal":2,"description":"Cool access tier"})
-enum_def["elements"].append({"value":"Archive","ordinal":3,"description":"Archive access tier"})
+enum_def["elementDefs"] = []
+enum_def["elementDefs"].append({"value":"Unknown","ordinal":0,"description":"Unknown access tier"})
+enum_def["elementDefs"].append({"value":"Hot","ordinal":1,"description":"Hot access tier"})
+enum_def["elementDefs"].append({"value":"Cool","ordinal":2,"description":"Cool access tier"})
+enum_def["elementDefs"].append({"value":"Archive","ordinal":3,"description":"Archive access tier"})
 
 enum_defs.append(enum_def)
 
@@ -111,10 +112,10 @@ structDefs_list = []
 structDefs = {}
 structDefs["category"] = atlas_enumdefs.Category.STRUCT.name
 structDefs["name"] = "blob_soft_deleted_state"
-structDefs["attributes"] = []
-structDefs["attributes"].append({"name":"deleted","typeName":"boolean","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name})
-structDefs["attributes"].append({"name":"deletedTime","typeName":"date","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name})
-structDefs["attributes"].append({"name":"deleted","typeName":"boolean","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name})
+structDefs["attributeDefs"] = []
+structDefs["attributeDefs"].append({"name":"deleted","typeName":"boolean","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name})
+structDefs["attributeDefs"].append({"name":"deletedTime","typeName":"date","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name})
+structDefs["attributeDefs"].append({"name":"deleted","typeName":"boolean","isOptional":True,"isIndexable":False,"includeInNotification":False,"cardinality": atlas_enumdefs.Cardinality.SINGLE.name})
 structDefs_list.append(structDefs)
 
 inp_classifications = []
@@ -393,5 +394,29 @@ print(json.dumps(typedefs))
     ],
     "entityDefs": [],
     "relationshipDefs": []
+}
+
+{
+    "mutatedEntities": {
+        "CREATE": [
+            {
+                "typeName": "azure_cosmosdb_account",
+                "guid": "5932beae-352d-414d-b09f-7e522a4d6456",
+                "status": "ACTIVE"
+            },
+            {
+                "typeName": "azure_cosmosdb_database",
+                "attributes": {
+                    "qualifiedName": "testdb"
+                },
+                "guid": "e6e61138-acd9-48c4-bcb3-28696bfb5adc",
+                "status": "ACTIVE"
+            }
+        ]
+    },
+    "guidAssignments": {
+        "-127818879948768": "e6e61138-acd9-48c4-bcb3-28696bfb5adc",
+        "-127818879948767": "5932beae-352d-414d-b09f-7e522a4d6456"
+    }
 }
 '''

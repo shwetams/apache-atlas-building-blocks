@@ -59,38 +59,38 @@ def create_relationship_defs(relationship_defs):
     
     relationship_defs_list = []
     for relationship_def in relationship_defs:
-        if relationship_def.get("name") is not None and relationship_def.get("endDef1") is not None and relationship_def.get("endDef2") is not None:
+        if relationship_def.get("name") is not None and relationship_def.get("endDef1") is not None and relationship_def.get("endDef2") is not None and relationship_def.get("relationshipCategory") is not None:
             end1Def = relationship_def["endDef1"]
             end2Def = relationship_def["endDef2"]
             if end1Def.get("name") is not None and end1Def.get("type") is not None and end1Def.get("cardinality") is not None and end2Def.get("name") is not None and end2Def.get("type") is not None and end2Def.get("cardinality"):
                 ## All mandatory values present
                 relationship = {}
                 relationship["name"] = relationship_def["name"]
-                relationship["relationshipCategory"] = relationship_def["relationship_category"]
+                relationship["relationshipCategory"] = relationship_def["relationshipCategory"]
                 relationship["endDef1"] = relationship_def["endDef1"]
                 relationship["endDef2"] = relationship_def["endDef2"]
                 if relationship_def.get("description") is not None:
                     relationship["description"]= relationship_def["description"]
                 else:
                     relationship["description"] = relationship_def["name"]
-                if relationship_def.get("propagate_tags") is not None:
-                    relationship["propagateTags"] = relationship_def["propagate_tags"]
+                if relationship_def.get("propagateTags") is not None:
+                    relationship["propagateTags"] = relationship_def["propagateTags"]
                 else:
                     relationship["propagateTags"] = atlas_enumdefs.relationship_propagateTags.NONE.name
-                if relationship_def.get("create_time") is not None:
-                    relationship["createTime"] = relationship_def["create_time"]
+                if relationship_def.get("createTime") is not None:
+                    relationship["createTime"] = relationship_def["createTime"]
                 else:
                     relationship["createTime"] = int(time.time())
-                if relationship_def.get("update_time") is not None:
-                    relationship["updateTime"] = relationship_def["update_time"]
+                if relationship_def.get("updateTime") is not None:
+                    relationship["updateTime"] = relationship_def["updateTime"]
                 else:
                     relationship["updateTime"] = int(time.time())
-                if relationship_def.get("created_by") is not None:
-                    relationship["createdBy"] = relationship_def["created_by"]
+                if relationship_def.get("createdBy") is not None:
+                    relationship["createdBy"] = relationship_def["createdBy"]
                 else:
                     relationship["createdBy"] = "admin"
-                if relationship_def.get("label") is not None:
-                    relationship["relationshipLabel"] = relationship_def["label"]
+                if relationship_def.get("relationshipLabel") is not None:
+                    relationship["relationshipLabel"] = relationship_def["relationshipLabel"]
                 else:
                     relationship["relationshipLabel"] = str("r:" + relationship_def["name"])
                 if relationship_def.get("guid") is not None:
