@@ -1,5 +1,6 @@
 import logging
-import algorithms.create_lineage as create_lineage
+#import algorithms.create_lineage as create_lineage
+import algorithms.json_generator_algorithms as algorithms
 import json
 import azure.functions as func
 
@@ -9,7 +10,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info(f'Creating entity.{req}')
     req_body = req.get_json()
     print(req_body)
-    entity_json = create_lineage.create_lineage_entity_def(req_body)
+    entity_json = algorithms.create_lineage_entity_def(req_body)
     if entity_json is not None:
         return func.HttpResponse(json.dumps(entity_json),status_code=200,mimetype="application/json")
     else:

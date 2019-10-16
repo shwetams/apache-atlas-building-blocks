@@ -70,7 +70,6 @@ end2["guid"] = "5932beae-352d-414d-b09f-7e522a4d6456"
 end2["typeName"] = "azure_cosmosdb_database"
 end2["uniqueAttributes"] = {}
 
-end2 = {}
 inp_relationship["end2"] = end2
 inp_relationship["homeId"] = "3de748df-f73d-43e7-8d50-0331f17d9457"
 inp_relationship["label"] = "Azure Cosmos DB Account to Azure Cosmos DB Database"
