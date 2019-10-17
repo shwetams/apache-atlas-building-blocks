@@ -1,0 +1,72 @@
+swagger: '2.0'
+info:
+  description: defaultDescription
+  version: '0.1'
+  title: defaultTitle
+paths:
+  /api/atlas_qualifiedname_service:
+    get:
+      produces:
+        - application/json
+      parameters:
+        - name: typeName
+          in: query
+          required: false
+          type: string
+          x-example: justadummyvalue
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            $ref: '#/definitions/Model1'
+    post:
+      consumes:
+        - application/json
+      produces:
+        - text/plain
+      parameters:
+        - name: typeName
+          in: query
+          required: false
+          type: string
+          x-example: justadummyvalue
+        - in: body
+          name: body
+          required: false
+          schema:
+            $ref: '#/definitions/Model0'
+          x-examples:
+            application/json: |-
+              {"accountname":"test",
+                  "path":"/qualified/name"
+              }
+      responses:
+        '200':
+          description: Definition generated from Swagger Inspector
+          schema:
+            type: string
+definitions:
+  Model0:
+    properties:
+      accountname:
+        type: string
+      path:
+        type: string
+  Input_parameters:
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+  Model1:
+    properties:
+      pattern:
+        type: string
+      input_parameters:
+        type: array
+        items:
+          $ref: '#/definitions/Input_parameters'
+      input_format:
+        type: string
+      description:
+        type: string
